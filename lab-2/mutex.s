@@ -13,10 +13,8 @@ lock_mutex:
 
 .retry:
 	ldrex r2, [r0]
-
-.checklocked:
 	cmp r2, r1 
-	beq .checklocked
+	beq .retry
 	
 	strex r2, r1, [r0]
 
